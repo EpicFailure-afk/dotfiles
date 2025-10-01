@@ -62,13 +62,3 @@ Instead, explore the folders, copy what you like, and adapt to your own setup
 Free to use, adapt, and learn from.
 
 ![footer](https://capsule-render.vercel.app/api?type=wave&color=auto&height=100&section=footer)
-```
-
-
-
-
-
-
-
-
-
