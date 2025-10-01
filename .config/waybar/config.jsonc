@@ -1,0 +1,373 @@
+{
+  "font": "Cascadia Code NF",
+
+  "layer": "top",
+  "position": "top",
+  "mode": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  "height": 0,
+  "modules-left": ["clock", "temperature", "hyprland/workspaces#rw"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": [
+    "custom/swaync",
+    "disk",
+    // "custom/settings",
+    // "custom/updates",
+    "tray",
+    "memory",
+    "cpu",
+    "network",
+    "bluetooth",
+    "battery",
+    "backlight",
+    "pulseaudio",
+    "pulseaudio#microphone",
+    "custom/power"
+  ],
+
+//!-------------------------------------------- MODULES-CENTER: -------------------------------------------------
+
+"hyprland/window": {
+  "format": "{}",
+  "rewrite": {
+	    "(.*)Mozilla Firefox": "󰈹 Firefox",
+      "(.*)Brave":"Brave",
+      "(.*)LibreWolf": "󰈹 LibreWolf",
+      "(.*)Discord": "󰙯 Discord",
+      "(.*)Visual Studio Code": "󰨞 Visual Studio Code",
+      "(.*)Thunar": "󰉋 thunar",
+      "(.*)epic_failure@archlinux(.*)": "  kitty",
+      "nvim(.*)": " Neovim",
+      "vim(.*)": " Vim"
+    }
+  },
+
+//!-------------------------------------------------MODULES-LEFT:------------------------------------------------------------
+
+//* CLOCK
+"clock": {
+    "format": " {:%I:%M %p}", // AM PM format
+    //"format": "  {:%H:%M}", // 24H
+    "format-alt": "{:%A  |  %I:%M %p  |  %e %B}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+},
+
+//* TEMPERATURE
+"temperature": {
+  "interval": 1,
+  "critical-threshold": 90,
+  "format-critical": "󰸁 {temperatureC}°C",
+  "format": " {temperatureC}°C"
+},
+
+//* Workspaces:
+"hyprland/workspaces#rw": {
+	"disable-scroll": true,
+	"all-outputs": true,
+	"warp-on-scroll": false,
+	"sort-by-number": true,
+	"show-special": false,
+	"on-click": "activate",
+	"on-scroll-up": "hyprctl dispatch workspace e+1",
+	"on-scroll-down": "hyprctl dispatch workspace e-1",
+	"persistent-workspaces": {
+		"*": 1
+	},
+	"format": "{icon} {windows}",
+	"format-window-separator": " ",
+	"window-rewrite-default": " ",
+	"window-rewrite": {		
+		"title<.*amazon.*>": " ",
+		"title<.*reddit.*>": " ",
+
+		"class<firefox|org.mozilla.firefox|librewolf|floorp|mercury-browser|[Cc]achy-browser>": " ",
+		"class<zen>": "󰰷 ",
+		"class<waterfox|waterfox-bin>": " ",
+		"class<microsoft-edge>": " ",
+		"class<Chromium|Thorium|[Cc]hrome>": " ",
+		"class<brave-browser>": "🦁 ",
+		"class<tor browser>": " ",
+		"class<firefox-developer-edition>": "🦊 ",
+
+		"class<kitty|konsole|floating-kitty>": " ",
+		"class<kitty-dropterm>": " ",
+		"class<com.mitchellh.ghostty>": " ",
+		"class<org.wezfurlong.wezterm>": " ",
+
+		"class<[Tt]hunderbird|[Tt]hunderbird-esr>": " ",
+		"class<eu.betterbird.Betterbird>": " ",
+		"title<.*gmail.*>": "󰊫 ",
+
+		"class<[Tt]elegram-desktop|org.telegram.desktop|io.github.tdesktop_x64.TDesktop>": " ",
+		"class<discord|[Ww]ebcord|Vesktop>": " ",
+		"title<.*whatsapp.*>": " ",
+		"title<.*zapzap.*>": " ",
+		"title<.*messenger.*>": " ",
+		"title<.*facebook.*>": " ",
+
+		"title<.*ChatGPT.*>": "󰚩 ",
+		"title<.*deepseek.*>": "󰚩 ",
+		"title<.*qwen.*>": "󰚩 ",
+		"class<subl>": "󰅳 ",
+		"class<slack>": " ",
+
+		"class<mpv>": " ",
+		"class<celluloid|Zoom>": " ",
+		"class<Cider>": "󰎆 ",
+		"title<.*Picture-in-Picture.*>": " ",
+		"title<.*youtube.*>": " ",
+		"class<vlc>": "󰕼 ",
+		"title<.*cmus.*>": " ",
+		"class<[Ss]potify>": " ",
+		"class<Plex>": "󰚺 ",
+
+		"class<virt-manager>": " ",
+		"class<.virt-manager-wrapped>": " ",
+		"class<virtualbox manager>": "💽 ",
+		"title<virtualbox>": "💽 ",
+		"class<remmina>": "🖥️ ",
+
+		"class<code|VSCode|code-url-handler|code-oss|codium|codium-url-handler|VSCodium>": "󰨞 ",
+		"class<dev.zed.Zed>": "󰵁",
+		"class<codeblocks>": "󰅩 ",
+		"title<.*github.*>": " ",
+		"class<mousepad>": " ",
+		"class<libreoffice-writer>": " ",
+		"class<libreoffice-startcenter>": "󰏆 ",
+		"class<libreoffice-calc>": " ",
+		"title<.*nvim ~.*>": " ",
+		"title<.*vim.*>": " ",
+		"title<.*nvim.*>": " ",
+		"title<.*figma.*>": " ",
+		"title<.*jira.*>": " ",
+		"class<jetbrains-idea>": " ",
+
+		"class<obs|com.obsproject.Studio>": " ",
+
+		"class<polkit-gnome-authentication-agent-1>": "󰒃 ",
+		"class<nwg-look>": " ",
+		"class<[Pp]avucontrol|org.pulseaudio.pavucontrol>": "󱡫 ",
+		"class<steam>": " ",
+		"class<thunar|nemo>": "󰝰 ",	
+		"class<Gparted>":"",
+		"class<gimp>": " ",
+		"class<emulator>": "📱 ",
+		"class<android-studio>": " ",
+		"class<org.pipewire.Helvum>": "󰓃",
+		"class<localsend>":"",
+		"class<PrusaSlicer|UltiMaker-Cura|OrcaSlicer>": "󰹛"
+		}
+},
+
+//!-------------------------------------------------MODULES-RIGHT:------------------------------------------------------------
+
+//* POWER
+"custom/power": {
+	"format": " ⏻ ",
+	"on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
+	"on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
+	"tooltip": true,
+	"tooltip-format": "Left Click: Logout Menu\nRight Click: Change Blur"
+},
+
+//* tray
+"tray": {
+  "icon-size": 13,
+  "spacing": 10
+},
+
+//* Volume:
+"pulseaudio": {
+  "format": "{icon}  {volume}%",
+  "tooltip": false,
+  "format-muted": "  Muted",
+  "on-click": "pamixer -t",
+  "on-scroll-up": "pamixer -i 1",
+  "on-scroll-down": "pamixer -d 1",
+  "scroll-step": 5,
+  "format-icons": {
+    "headphone": "",
+    "hands-free": "",
+    "headset": "",
+    "phone": "",
+    "portable": "",
+    "car": "",
+    "default": ["", "", "", ""]
+  }
+},
+
+//* Microphone:
+"pulseaudio#microphone": {
+  "format": "{format_source}",
+  "format-source": " {volume}%",
+  "format-source-muted": "  Muted",
+  "on-click": "pamixer --default-source -t",
+  "on-scroll-up": "pamixer --default-source -i 5",
+  "on-scroll-down": "pamixer --default-source -d 5",
+  "scroll-step": 5
+},
+
+//* Backlight:
+"backlight": {
+  "device": "intel_backlight",
+  "format": "{icon} {percent}%",
+  "format-icons": ["󰃞", "󰃟", "󰃠"],
+  "on-scroll-up": "brightnessctl set 1%+",
+  "on-scroll-down": "brightnessctl set 1%-",
+  "min-length": 6
+},
+
+//* Battery:
+"battery": {
+  "states": {
+    "good": 95,
+    "warning": 30,
+    "critical": 20
+  },
+  "format": "{icon} {capacity}%",
+  "format-charging": " {capacity}%",
+  "format-plugged": " {capacity}%",
+  "format-alt": "{time} {icon}",
+  "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+},
+
+//* Bluetooth:
+"bluetooth": {
+	"format": " ",
+	"format-disabled": "󰂳",
+	"format-connected": "󰂱 {num_connections}",
+	"tooltip-format": " {device_alias}",
+	"tooltip-format-connected": "{device_enumerate}",
+	"tooltip-format-enumerate-connected": " {device_alias} 󰂄{device_battery_percentage}%",
+	"tooltip": true,
+	"on-click": "blueman-manager"
+},
+
+//* Network:
+  "network": {
+    "tooltip": true,
+    "format-wifi": "  {essid}",
+    "format-ethernet": "󰈀 ",
+    "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "format-linked": "󰈀 {ifname} (No IP)",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format-disconnected": "Disconnected",
+    // "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
+    "interval": 2,
+    "on-click": "exec ~/.config/rofi/wifi/wifi.sh"
+    // "on-click-right": "kitty -e nmtui"
+    // "on-click": "nmcli d wifi list | rofi -dmenu -p 'Select Wi-Fi' | awk '{print $1}' | xargs nmcli d wifi connect"
+  },
+
+//* CPU:
+  "cpu": {
+    "interval": 10, // Update interval in seconds
+    "format": "󰍛 {usage}%",
+    "format-alt": "{icon0}{icon1}{icon2}{icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+  },
+
+//* Memory:
+  "memory": {
+    "states": {
+      "c": 90, // critical
+      "h": 60, // high
+      "m": 30 // medium
+    },
+    "interval": 10,
+    "format": "󰾆 {used}GB",
+    "format-m": "󰾅 {used}GB",
+    "format-h": "󰓅 {used}GB",
+    "format-c": " {used}GB",
+    "format-alt": "󰾆 {percentage}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB"
+  },
+
+//* Disk 
+"disk": {
+  "interval": 30,
+    //"format": "󰋊",
+    "path": "/home/epic_failure/",
+    //"format-alt-click": "click",
+    "format": "{percentage_used}% 󰋊 ",
+    //"tooltip": true,
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)"
+  }
+}
+
+//?-------------------------------------------------------------------------------------------------------------
+
+//? Extra modules (uncomment to enable):
+
+  //? default clock
+  // "clock": {
+  //   "format": "{:%A    %d-%B-%Y    %I:%M:%S %p}",
+  //   "interval": 1,
+  //   "rotate": 0,
+  //   "tooltip-format": "<tt>{calendar}</tt>",
+  //   "calendar": {
+  //     "mode": "month",
+  //     "mode-mon-col": 3,
+  //     "on-scroll": 1,
+  //     "on-click-right": "mode",
+  //     "format": {
+  //       "months": "<span color='#a6adc8'><b>{}</b></span>",
+  //       "weekdays": "<span color='#a6adc8'><b>{}</b></span>",
+  //       "today": "<span color='#a6adc8'><b>{}</b></span>",
+  //       "days": "<span color='#555869'><b>{}</b></span>"
+  //     }
+  //   }
+  // },
+
+  //? Custom Clock with AM PM and 24H format toggle
+/*
+  "clock": {
+	"interval": 1,
+    "format": " {:%I:%M %p}", // AM PM format
+    //"format": " {:%H:%M:%S}", // 24H
+	"format-alt": " {:%H:%M   %Y, %d %B, %A}",
+	"tooltip-format": "<tt><small>{calendar}</small></tt>",
+	"calendar": {
+		"mode": "year",
+		"mode-mon-col": 3,
+		"weeks-pos": "right",
+		"on-scroll": 1,
+		"format": {
+			"months": "<span color='#ffead3'><b>{}</b></span>",
+			"days": "<span color='#ecc6d9'><b>{}</b></span>",
+			"weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+			"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+			"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+		}
+	}
+},
+*/
+
+//? Swaync (Notification Center)
+/*
+  "custom/swaync": {
+	"tooltip": true,
+	"tooltip-format": "Left Click: Launch Notification Center\nRight Click: Do not Disturb",
+	"format": "{} {icon} ",
+	"format-icons": {
+		"notification": "<span foreground='red'><sup></sup></span>",
+		"none": "",
+		"dnd-notification": "<span foreground='red'><sup></sup></span>",
+		"dnd-none": "",
+		"inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		"inhibited-none": "",
+		"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+		"dnd-inhibited-none": ""
+	},
+	  "return-type": "json",
+	  "exec-if": "which swaync-client",
+	  "exec": "swaync-client -swb",
+	  "on-click": "sleep 0.1 && swaync-client -t -sw",
+	  "on-click-right": "swaync-client -d -sw",
+	  "escape": true
+  }
+*/
