@@ -87,6 +87,7 @@ Built on Arch Linux. Focused on clean visuals, practical keybindings, and minima
 ## 📸 Preview
 
 ![preview](image.png)
+![preview](image_2.png)
 
 
 ---
